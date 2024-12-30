@@ -9,7 +9,7 @@
 	if(isrobot(usr))
 		var/mob/living/silicon/robot/R = usr
 		if(R.module)
-			if (usr.s_active != null)
+			if(usr.s_active != null)
 				usr.s_active.close(usr)
 			R.hud_used.toggle_show_robot_modules()
 			return 1
