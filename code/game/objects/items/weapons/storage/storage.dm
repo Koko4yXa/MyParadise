@@ -140,7 +140,7 @@
 
 
 /obj/item/storage/AltClick(mob/user)
-	if(ishuman(user) && Adjacent(user) && !user.incapacitated() && !HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(ishuman(user) || issilicon(user) && Adjacent(user) && !user.incapacitated() && !HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		open(user)
 	else if(isobserver(user))
 		show_to(user)
@@ -212,6 +212,8 @@
 		add_fingerprint(user)
 	if(user.s_active)
 		user.s_active.close(user)
+	if(user.hud_used.isshown_robot_modules())
+		user.hud_used.toggle_show_robot_modules()
 	show_to(user)
 
 /obj/item/storage/proc/close(mob/user)
