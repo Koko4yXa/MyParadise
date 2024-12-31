@@ -9,8 +9,6 @@
 	if(isrobot(usr))
 		var/mob/living/silicon/robot/R = usr
 		if(R.module)
-			if(usr.s_active != null)
-				usr.s_active.close(usr)
 			R.hud_used.toggle_show_robot_modules()
 			return 1
 		R.pick_module()
@@ -198,19 +196,22 @@
 	if(!isrobot(mymob))
 		return
 
-	var/mob/living/silicon/robot/R = mymob
+	var/mob/living/silicon/robot/robot = mymob
 
-	R.shown_robot_modules = !R.shown_robot_modules
+	robot.shown_robot_modules = !robot.shown_robot_modules
+
+	if(robot.s_active && robot.shown_robot_modules)
+		robot.s_active.close(robot)
+
 	update_robot_modules_display()
 
-/datum/hud/proc/isshown_robot_modules()
+/datum/hud/proc/is_shown_robot_modules()
 	if(!isrobot(mymob))
 		return
 
-	var/mob/living/silicon/robot/R = usr
+	var/mob/living/silicon/robot/robot = mymob
 
-	return R.shown_robot_modules
-
+	return robot.shown_robot_modules
 
 /datum/hud/proc/update_robot_modules_display()
 	if(!isrobot(mymob))
