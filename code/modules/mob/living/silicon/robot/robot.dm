@@ -1491,7 +1491,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 			set_light_on(FALSE)
 
 		else
-			set_light_range((lamp_intensity + (on_fire ? fire_light_modificator : 0)) * 0.5)
+			set_light_range((lamp_intensity + (on_fire ? fire_light_modificator : 0)) - 2)
 			set_light_on(TRUE)
 
 	else
@@ -1612,7 +1612,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 
 							cleaned_human.clean_blood()
 							to_chat(cleaned_human, span_danger("[src] cleans your face!"))
-							
+
 				if(floor_only)
 					tile.clean_blood()
 		return
@@ -1670,7 +1670,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 /mob/living/silicon/robot/proc/SetLockdown(state = TRUE)
 	if(isclocker(src))
 		return
-		
+
 	// They stay locked down if their wire is cut.
 	if(wires?.is_cut(WIRE_BORG_LOCKED))
 		state = TRUE
@@ -1736,7 +1736,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	Immobilize(5 SECONDS)
 	say("Загрузка модуля...")
 	setDir(SOUTH)
-	
+
 	for(var/i in 1 to 4)
 		playsound(loc, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 50, TRUE, -1)
 
@@ -1782,7 +1782,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 )
 	if(suiciding)
 		return ..()
-		
+
 	return STATUS_UPDATE_NONE
 
 
@@ -1966,7 +1966,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 
 	if(radio)
 		qdel(radio)
-		
+
 	radio = new /obj/item/radio/borg/ert/specops(src)
 	radio.recalculateChannels()
 	playsound(loc, 'sound/mecha/nominalsyndi.ogg', 75, 0)
@@ -1998,7 +1998,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 
 		else
 			eyes_olay = "eyes-[base_icon]"
-			
+
 		if(eyes_olay)
 			add_overlay(eyes_olay)
 
