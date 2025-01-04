@@ -406,6 +406,9 @@
 		var/count_secborgs = 0
 
 		for(var/mob/living/silicon/robot/R in GLOB.alive_mob_list)
+			if (R==robot)
+			continue
+
 			if(R && R.stat != DEAD && R.module && istype(R.module, /obj/item/robot_module/security))
 				count_secborgs++
 
