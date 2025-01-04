@@ -48,6 +48,7 @@
 		"288" = 'icons/effects/light_overlays/light_288.dmi',
 		"320" = 'icons/effects/light_overlays/light_320.dmi',
 		"352" = 'icons/effects/light_overlays/light_352.dmi',
+		"544" = 'icons/effects/light_overlays/light_544.dmi',
 		)
 
 	///Overlay effect to cut into the darkness and provide light.
